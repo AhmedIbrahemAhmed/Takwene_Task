@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="MusicDistribution.API/MusicDistribution.API.csproj" Id="8390670b-195d-4333-8aa7-53bf4ceca984" />
+  <Project Path="MusicDistribution.BLL/MusicDistribution.BLL.csproj" Id="7c4d5c5b-6861-42f9-877c-7f87607c2a88" />
+  <Project Path="MusicDistribution.DAL/MusicDistribution.DAL.csproj" Id="6af117fe-aaae-4fd0-b6bb-32dcad283be3" />
+</Solution>
