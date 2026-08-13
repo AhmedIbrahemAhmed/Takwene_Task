@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MusicDistribution.BLL.Services;
 using MusicDistribution.DAL;
 
 namespace MusicDistribution.API
@@ -20,6 +21,9 @@ namespace MusicDistribution.API
             builder.Services.AddScoped<DAL.Repositories.ITrackRepository, DAL.Repositories.TrackRepository>();
             builder.Services.AddScoped<DAL.Repositories.IDspRepository, DAL.Repositories.DspRepository>();
             builder.Services.AddScoped<DAL.Repositories.ITrackDistributionRepository, DAL.Repositories.TrackDistributionRepository>();
+            builder.Services.AddScoped<IArtistService, ArtistService>();
+            builder.Services.AddScoped<ITrackService, TrackService>();
+            builder.Services.AddScoped<IDistributionService, DistributionService>();
 
 
             // Add services to the container.

@@ -6,5 +6,6 @@ namespace MusicDistribution.DAL.Repositories
     {
         Task<TrackDistribution> AddAsync(TrackDistribution distribution);
         Task<List<TrackDistribution>> GetByTrackIdAsync(int trackId);
+        Task<bool> ExistsAsync(int trackId, int dspId);
     }
 }

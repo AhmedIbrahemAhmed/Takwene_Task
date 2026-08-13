@@ -8,5 +8,6 @@ namespace MusicDistribution.DAL.Repositories
         Task<List<Track>> GetAllAsync(int? artistId = null, string? genre = null, object? status = null);
         Task<Track?> GetByIdAsync(int id);
         Task UpdateAsync(Track track);
+        Task<bool> ExistsByIsrcAsync(string isrc);
     }
 }

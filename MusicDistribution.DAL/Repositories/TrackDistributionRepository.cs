@@ -26,5 +26,9 @@ namespace MusicDistribution.DAL.Repositories
                 .Where(td => td.TrackId == trackId)
                 .ToListAsync();
         }
+        public async Task<bool> ExistsAsync(int trackId, int dspId)
+        {
+            return await _db.TrackDistributions.AnyAsync(td => td.TrackId == trackId && td.DspId == dspId);
+        }
     }
 }

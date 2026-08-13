@@ -53,5 +53,10 @@ namespace MusicDistribution.DAL.Repositories
             _db.Tracks.Update(track);
             await _db.SaveChangesAsync();
         }
+
+        public async Task<bool> ExistsByIsrcAsync(string isrc)
+        {
+            return await _db.Tracks.AnyAsync(t => t.ISRC == isrc);
+        }
     }
 }
