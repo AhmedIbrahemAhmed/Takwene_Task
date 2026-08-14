@@ -1,1 +1,61 @@
-<p>track-list works!</p>
+<div class="container">
+  <h1>Tracks</h1>
+
+  <div class="filter-bar">
+    <label for="status">Filter by status:</label>
+
+    <select
+      id="status"
+      [(ngModel)]="statusFilter"
+      (ngModelChange)="onFilterChange()">
+
+      <option value="">All</option>
+      <option value="Draft">Draft</option>
+      <option value="Submitted">Submitted</option>
+      <option value="Distributed">Distributed</option>
+
+    </select>
+  </div>
+
+  @if (loading()) {
+    <p>Loading...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    @if (tracks().length > 0) {
+
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (track of tracks(); track track.id) {
+            <tr
+              class="clickable-row"
+              (click)="navigateToTrackDetail(track.id)">
+
+              <td>{{ track.title }}</td>
+              <td>{{ track.artistName }}</td>
+              <td>{{ track.genre }}</td>
+              <td>{{ track.status }}</td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+
+    } @else {
+      <p>No tracks found.</p>
+    }
+  }
+</div>

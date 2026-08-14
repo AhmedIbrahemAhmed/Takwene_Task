@@ -49,8 +49,28 @@ namespace MusicDistribution.BLL.Services
 
         public async Task<List<TrackResponse>> GetFilteredAsync(TrackFilterRequest filter)
         {
-            var tracks = await _trackRepository.GetAllAsync(filter.ArtistId, filter.Genre, filter.Status);
-            return tracks.Select(t => MapToResponse(t, t.Artist.Name)).ToList();
+            TrackStatus? status = null;
+
+            if (!string.IsNullOrWhiteSpace(filter.Status))
+            {
+                if (Enum.TryParse<TrackStatus>(
+                    filter.Status,
+                    true,
+                    out var parsedStatus))
+                {
+                    status = parsedStatus;
+                }
+            }
+
+            var tracks = await _trackRepository.GetAllAsync(
+                filter.ArtistId,
+                filter.Genre,
+                status
+            );
+
+            return tracks
+                .Select(t => MapToResponse(t, t.Artist.Name))
+                .ToList();
         }
 
         public async Task<TrackDetailResponse> GetByIdAsync(int id)

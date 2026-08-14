@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Track, TrackDetail } from '../models/track.model';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 
-@Service()
-export class TrackService {
+@Injectable({
+  providedIn: 'root'
+})export class TrackService {
   private baseUrl = 'http://localhost:5011/api';
   private http = inject(HttpClient);
 
