@@ -1,1 +1,48 @@
-<p>track-detail works!</p>
+<div class="container">
+	<button class="back" (click)="back()">← Back</button>
+
+	@if (loading()) {
+		<p>Loading...</p>
+	}
+
+	@if (error()) {
+		<p class="error">{{ error() }}</p>
+	}
+
+	@if (!loading() && !error() && track()) {
+		<h1>{{ track()!.title }}</h1>
+
+		<div class="meta">
+			<p><strong>Artist:</strong> {{ track()!.artistName }}</p>
+			<p><strong>ISRC:</strong> {{ track()!.isrc }}</p>
+			<p><strong>Release Date:</strong> {{ track()!.releaseDate }}</p>
+			<p><strong>Genre:</strong> {{ track()!.genre }}</p>
+			<p><strong>Status:</strong> {{ track()!.status }}</p>
+		</div>
+
+		<h2>Distributions</h2>
+
+		@if (track()!.distributions.length > 0) {
+			<table>
+				<thead>
+					<tr>
+						<th>DSP</th>
+						<th>Status</th>
+						<th>Submitted At</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (d of track()!.distributions; track d.dspId) {
+						<tr>
+							<td>{{ d.dspName }}</td>
+							<td>{{ d.status }}</td>
+							<td>{{ d.submittedAt }}</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		} @else {
+			<p>No distributions found for this track.</p>
+		}
+	}
+</div>

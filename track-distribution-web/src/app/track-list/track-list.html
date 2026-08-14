@@ -35,6 +35,7 @@
             <th>Artist</th>
             <th>Genre</th>
             <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -48,6 +49,9 @@
               <td>{{ track.artistName }}</td>
               <td>{{ track.genre }}</td>
               <td>{{ track.status }}</td>
+              <td>
+                <button class="view-btn" (click)="$event.stopPropagation(); navigateToTrackDetail(track.id)">View</button>
+              </td>
 
             </tr>
           }
