@@ -22,7 +22,7 @@ A full-stack application for managing music distribution across Digital Service 
 ### Backend Setup
 
 #### 1. Configure Database Connection
-Edit `MusicDistribution.Api/appsettings.json` and update the connection string if needed:
+Edit `MusicDistribution.API/appsettings.json` and update the connection string if needed:
 
 ```json
 {
@@ -49,7 +49,7 @@ Update the JWT configuration in `appsettings.json`:
 
 #### 3. Build & Run Backend
 ```bash
-cd MusicDistribution.Api
+cd MusicDistribution.API
 dotnet restore
 dotnet build
 dotnet run
@@ -61,7 +61,7 @@ The API will start at **http://localhost:5011**
 
 To run migrations manually instead:
 ```bash
-dotnet ef database update --project MusicDistribution.DAL --startup-project MusicDistribution.Api
+dotnet ef database update --project MusicDistribution.DAL --startup-project MusicDistribution.API
 ```
 
 ---
@@ -193,7 +193,7 @@ Or manually: open **http://localhost:4200**, browse the track list, filter by st
 
 ```
 MusicDistribution/
-├── MusicDistribution.Api/           # Presentation layer
+├── MusicDistribution.API/           # Presentation layer
 │   ├── Controllers/
 │   ├── Auth/                        # JWT token generation
 │   └── appsettings.json
@@ -218,7 +218,7 @@ MusicDistribution/
 |---|---|
 | `Jwt:Key is not configured` | Set `Jwt:Key` in `appsettings.json`, minimum 32 characters |
 | Database connection error | Confirm SQL Server/LocalDB is running and the connection string matches your environment |
-| Migrations not applied | Run manually: `dotnet ef database update --project MusicDistribution.DAL --startup-project MusicDistribution.Api` |
+| Migrations not applied | Run manually: `dotnet ef database update --project MusicDistribution.DAL --startup-project MusicDistribution.API` |
 | Swagger says a required field is missing even though it's filled in | This is a Swagger UI validation-timing quirk — click outside the field to blur it before hitting Execute, or test via Postman/cURL instead |
 | CORS errors from the frontend | Confirm the API is running on `http://localhost:5011` and the frontend origin (`http://localhost:4200`) matches the CORS policy in `Program.cs` |
 | `npm install` fails | `npm cache clean --force && npm install` |
