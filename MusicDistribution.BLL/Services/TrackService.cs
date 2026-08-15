@@ -69,7 +69,7 @@ namespace MusicDistribution.BLL.Services
             );
 
             return tracks
-                .Select(t => MapToResponse(t, t.Artist.Name))
+                .Select(t => MapToResponse(t, t.Artist!.Name))
                 .ToList();
         }
 
@@ -84,15 +84,15 @@ namespace MusicDistribution.BLL.Services
                 Id = track.Id,
                 Title = track.Title,
                 ArtistId = track.ArtistId,
-                ArtistName = track.Artist.Name,
+                ArtistName = track.Artist!.Name,
                 Isrc = track.ISRC,
                 ReleaseDate = track.ReleaseDate,
                 Genre = track.Genre,
                 Status = track.Status.ToString(),
-                Distributions = track.Distributions.Select(d => new TrackDistributionResponse
+                Distributions = track.Distributions!.Select(d => new TrackDistributionResponse
                 {
                     DspId = d.DspId,
-                    DspName = d.Dsp.Name,
+                    DspName = d.Dsp!.Name,
                     Status = d.Status.ToString(),
                     SubmittedAt = d.SubmittedAt
                 }).ToList()

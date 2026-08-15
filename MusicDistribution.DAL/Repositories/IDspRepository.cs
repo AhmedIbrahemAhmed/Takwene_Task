@@ -6,5 +6,6 @@ namespace MusicDistribution.DAL.Repositories
     {
         Task<List<Dsp>> GetAllAsync();
         Task<Dsp?> GetByIdAsync(int id);
+        Task AddAsync(Dsp dsp);
     }
 }

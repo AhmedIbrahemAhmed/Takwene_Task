@@ -29,6 +29,7 @@ namespace MusicDistribution.API
             builder.Services.AddScoped<IArtistService, ArtistService>();
             builder.Services.AddScoped<ITrackService, TrackService>();
             builder.Services.AddScoped<IDistributionService, DistributionService>();
+            builder.Services.AddScoped<IDspService, DspService>();
 
             // JWT Auth
             var jwtKey = builder.Configuration["Jwt:Key"]

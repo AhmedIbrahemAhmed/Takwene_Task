@@ -21,5 +21,11 @@ namespace MusicDistribution.DAL.Repositories
         {
             return await _db.Dsps.FindAsync(id);
         }
+
+        public async Task AddAsync(Dsp dsp)
+        {
+            await _db.Dsps.AddAsync(dsp);
+            await _db.SaveChangesAsync();
+        }
     }
 }
